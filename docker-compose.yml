@@ -1,16 +1,16 @@
-version: '3.8'
-
 services:
-  psql:
-    image: postgres:latest
+  mysql_bp:
+    image: mysql:latest
+    restart: unless-stopped
     environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${BLUEPRINT_DB_DATABASE}
+      MYSQL_USER: ${BLUEPRINT_DB_USERNAME}
+      MYSQL_PASSWORD: ${BLUEPRINT_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${BLUEPRINT_DB_ROOT_PASSWORD}
     ports:
-      - "${DB_PORT}:5432"
+      - "${BLUEPRINT_DB_PORT}:3306"
     volumes:
-      - psql_volume:/var/lib/postgresql/data
+      - mysql_volume_bp:/var/lib/mysql
 
 volumes:
-  psql_volume:
+  mysql_volume_bp:

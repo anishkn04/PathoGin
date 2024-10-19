@@ -7,33 +7,29 @@ import (
 	"time"
 
 	"github.com/testcontainers/testcontainers-go"
-	"github.com/testcontainers/testcontainers-go/modules/postgres"
+	"github.com/testcontainers/testcontainers-go/modules/mysql"
 	"github.com/testcontainers/testcontainers-go/wait"
 )
 
-func mustStartPostgresContainer() (func(context.Context) error, error) {
+func mustStartMySQLContainer() (func(context.Context) error, error) {
 	var (
 		dbName = "database"
 		dbPwd  = "password"
 		dbUser = "user"
 	)
 
-	dbContainer, err := postgres.Run(
-		context.Background(),
-		"postgres:latest",
-		postgres.WithDatabase(dbName),
-		postgres.WithUsername(dbUser),
-		postgres.WithPassword(dbPwd),
-		testcontainers.WithWaitStrategy(
-			wait.ForLog("database system is ready to accept connections").
-				WithOccurrence(2).
-				WithStartupTimeout(5*time.Second)),
+	dbContainer, err := mysql.Run(context.Background(),
+		"mysql:8.0.36",
+		mysql.WithDatabase(dbName),
+		mysql.WithUsername(dbUser),
+		mysql.WithPassword(dbPwd),
+		testcontainers.WithWaitStrategy(wait.ForLog("port: 3306  MySQL Community Server - GPL").WithStartupTimeout(30*time.Second)),
 	)
 	if err != nil {
 		return nil, err
 	}
 
-	database = dbName
+	dbname = dbName
 	password = dbPwd
 	username = dbUser
 
@@ -42,7 +38,7 @@ func mustStartPostgresContainer() (func(context.Context) error, error) {
 		return dbContainer.Terminate, err
 	}
 
-	dbPort, err := dbContainer.MappedPort(context.Background(), "5432/tcp")
+	dbPort, err := dbContainer.MappedPort(context.Background(), "3306/tcp")
 	if err != nil {
 		return dbContainer.Terminate, err
 	}
@@ -54,15 +50,15 @@ func mustStartPostgresContainer() (func(context.Context) error, error) {
 }
 
 func TestMain(m *testing.M) {
-	teardown, err := mustStartPostgresContainer()
+	teardown, err := mustStartMySQLContainer()
 	if err != nil {
-		log.Fatalf("could not start postgres container: %v", err)
+		log.Fatalf("could not start mysql container: %v", err)
 	}
 
 	m.Run()
 
 	if teardown != nil && teardown(context.Background()) != nil {
-		log.Fatalf("could not teardown postgres container: %v", err)
+		log.Fatalf("could not teardown mysql container: %v", err)
 	}
 }
 

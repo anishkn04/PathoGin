@@ -9,7 +9,7 @@ import (
 
 	_ "github.com/joho/godotenv/autoload"
 
-	"Test/internal/database"
+	"github.com/anishkn04/PathoGin/internal/database"
 )
 
 type Server struct {

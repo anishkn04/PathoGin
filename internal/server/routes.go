@@ -5,8 +5,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"Test/cmd/web"
+	"io/fs"
+
 	"github.com/a-h/templ"
+	"github.com/anishkn04/PathoGin/cmd/web"
 )
 
 func (s *Server) RegisterRoutes() http.Handler {
@@ -16,7 +18,8 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	r.GET("/health", s.healthHandler)
 
-	r.Static("/assets", "./cmd/web/assets")
+	staticFiles, _ := fs.Sub(web.Files, "assets")
+	r.StaticFS("/assets", http.FS(staticFiles))
 
 	r.GET("/web", func(c *gin.Context) {
 		templ.Handler(web.HelloForm()).ServeHTTP(c.Writer, c.Request)
