@@ -25,3 +25,8 @@ CREATE TABLE `lab_table` (
     lab_address TEXT NOT NULL,
     test_array TEXT NOT NULL
 )
+
+CREATE TABLE `category_table` (
+    category_id INT NOT NULL PRIMARY KEY,
+    category_name VARCHAR(30)
+)
