@@ -30,3 +30,11 @@ CREATE TABLE `category_table` (
     category_id INT NOT NULL PRIMARY KEY,
     category_name VARCHAR(30)
 )
+
+
+CREATE TABLE `doctors_table` (
+    doctor_id INT NOT NULL PRIMARY KEY,
+    doctorname VARCHAR(255) NOT NULL,
+    doc_reg_num VARCHAR(255) NOT NULL,
+    doc_location VARCHAR(255)
+);
