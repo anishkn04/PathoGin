@@ -1,4 +1,4 @@
-# Contribution Guide for PathoGin 🌐
+# Contribution Guide for PathoGin
 
 Welcome to the PathoGin repository! Follow these steps to make your contributions.
 
@@ -33,40 +33,31 @@ Welcome to the PathoGin repository! Follow these steps to make your contribution
    - Once satisfied with your changes, commit them with a meaningful message.
      ```bash
      git add .
-     git commit -m "Update header layout for mobile responsiveness"
+     git commit -m "fix: prevent racing of requests"
      ```
 
 8. **Push Your Changes to GitHub**:
    - Push your changes to your forked repository on GitHub.
      ```bash
-     git push
+     git push --set-upstream origin branch-name
      ```
 
 9. **Submit a Pull Request**:
-   - Go to the [NCIT Alumni Website repository](https://github.com/noskofficial/ncitalums) and submit a PR
+   - Go to the [PathoGin repository](https://github.com/anishkn04/PathoGin) and submit a PR
    - **Take a screenshot of your change** before submitting the PR and include it in the description.
-   - Apply the label **"submit-4-review"** to signal the maintainers to review your PR.
+   - Make sure your PR is descriptive of what changes you made
 
 10. **Review and Feedback**:
     - The maintainers will review your PR. Please be open to feedback and be prepared to make additional changes if requested.
 
-## Rewards 🎁
-
-- **Top 10 contributors** will win **exclusive NOSK t-shirts**! 👕
-- **Top 50 contributors** will get **stickers**! 🎉
 
 ## Contribution Guidelines
 
 - **HTML/CSS Standards**: Follow best practices for HTML and CSS. Keep the design responsive and clean.
 - **JavaScript**: Ensure any JavaScript code is well-documented and functional across modern browsers.
+- **API Consistency**: Ensure that endpoints, database column names, table names, and other elements are consistent across the project.
 - **Commit Messages**: Be clear and concise. Explain the "what" and "why" of your changes. Make sure to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 - **Design Consistency**: Ensure your changes align with the overall design and branding of the website.
-
-## Stay Connected 💬
-
-Join our community on:
-- [Discord](https://discord.gg/ryUf3jjFJ6)
-- [Telegram](https://t.me/noskgroup)
 
 ## Resources
 
@@ -81,4 +72,4 @@ Thank you for your contributions! 🙌
 If you have any questions, feel free to reach out to the maintainers or open an issue.
 
 ### Maintainers:
-- [NOSK](mailto:nosk@ncit.edu.np)
+- [Anish KN](mailto:anishnep51@gmail.com)
